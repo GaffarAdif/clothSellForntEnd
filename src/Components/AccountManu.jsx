@@ -6,6 +6,8 @@ import { FaPen } from "react-icons/fa";
 import { MdMenuBook } from "react-icons/md";
 import { MdOutlineMessage } from "react-icons/md";
 import { SiGithubsponsors } from "react-icons/si";
+import { ImFacebook2 } from "react-icons/im";
+import { FaAddressCard } from "react-icons/fa";
 
 export const AccountManu = () => {
   return (
@@ -27,13 +29,17 @@ export const AccountManu = () => {
 <div className="w-full h-10">
   <h2 className='text-center text-[25px]'>Gaffar Adif</h2>
 </div>
-
 {/* Functionality section  */}
 <div className="w-full grid grid-cols-4 gap-1 py-3 ">
 
   <button className='bg-[#94d2bd] h-fit w-full py-2 flex flex-col justify-center items-center rounded-md'>
     < FaUserPen className='w-8 h-8' />
     <span className='text-[12px]'>Personal Info</span>
+
+    </button>
+    <button className='bg-[#94d2bd] h-fit w-full py-2  flex flex-col justify-center items-center rounded-md'>
+    < FaAddressCard className='w-8 h-8' />
+    <span className='text-[12px]'>My Address</span>
 
     </button>
 
@@ -63,6 +69,10 @@ export const AccountManu = () => {
   <button className='bg-[#94d2bd] h-fit w-full py-2  flex flex-col justify-center items-center rounded-md'>
     < MdOutlineMessage className='w-8 h-8' />
     <span className='text-[12px]'>Notification</span>
+    </button>
+  <button className='bg-[#94d2bd] h-fit w-full py-2  flex flex-col justify-center items-center rounded-md'>
+    < ImFacebook2 className='w-8 h-8' />
+    <span className='text-[12px]'>Facebook Page</span>
 
     </button>
 

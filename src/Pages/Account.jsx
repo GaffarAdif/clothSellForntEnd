@@ -19,7 +19,6 @@ export const Account = () => {
     <div className="w-full h-screen px-5">
 
     <Header />
-
     {isLoging ?<AccountManu />  : <div className="divHightWithoutHeader w-full  flex flex-col gap-5 justify-center items-center">
 <Link to={'/account/loging'} className='h-10 w-[150px] rounded-md bg-yellow-400  flex items-center justify-center'>Loging</Link>
 <Link to={'/account/registration'} className='h-10 w-[150px] rounded-md bg-green-400  flex items-center justify-center'>Ragistration</Link>

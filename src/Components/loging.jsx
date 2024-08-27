@@ -3,6 +3,7 @@ import { Header } from './Header'
 import { MdEmail } from "react-icons/md";
 import { FaKey } from "react-icons/fa6";
 import { GoEye,GoEyeClosed } from "react-icons/go";
+import { FaPhoneAlt } from "react-icons/fa";
 
 import '../GlobalCss/global.css'
 import { Link } from 'react-router-dom';
@@ -10,6 +11,13 @@ import { Link } from 'react-router-dom';
 export const Logging = () => {
     const [eyeOpen,setEyeopen] = useState(true)
     const [passtpe,setpasstpe] = useState('text')
+
+    
+    const [PhoneNumbre,setPhoneNumber] = useState('')
+    const [Password,setPassword] = useState('')
+
+
+// pasword eye iacon handle 
 
     const passwordHandle = ()=>{
 
@@ -22,8 +30,45 @@ export const Logging = () => {
 
         setEyeopen((prev)=>!prev)
     }
-    
 
+    // password Data Hanlde 
+    
+const HandleInputData = (e)=>{
+const targatedItem =  e.target
+
+if(targatedItem.name == 'phoneNumber'){
+    setPhoneNumber(targatedItem.value)
+}
+if(targatedItem.name == 'password'){
+    setPassword(targatedItem.value)
+}
+
+}
+
+
+ // for phone number check
+ const PhoneNerValidate = () => {
+    const numlenth = PhoneNumbre.length === 11 ? true : false;
+    const checkNumOnly = isNaN(Number(PhoneNumbre)) ? false : true;
+
+    const check01haveOrNot = PhoneNumbre.includes("01");
+
+    if (numlenth && checkNumOnly && check01haveOrNot) {
+        console.log('all okey')
+      return true;
+    } else {
+        console.log('all not okey')
+
+      return false;
+    }
+  };
+
+
+    // loging hadnle section here 
+    const HandleLoging = (e)=>{
+        e.preventDefault()
+        PhoneNerValidate()
+    }
 
   return (
 
@@ -35,17 +80,15 @@ export const Logging = () => {
             <div className="w-full h-fit py-5 mt-[80px] bg-[#a4c3b277] rounded-md">
 
                     <h3 className='w-full h-8 text-center text-[25px]'>Loging</h3>
-
-                  
-                    <form className='my-2' method='post'>
+                    <form className='my-2' onSubmit={HandleLoging}>
                         
                           {/* email section  */}
                         <div className="w-full h-fit py-1 px-1 flex gap-2">
                             <div className="w-[30%] h-10 flex justify-end items-center ">
-                                <label className='flex items-center justify-center gap-2' htmlFor="email">Email<MdEmail /> :  </label>
+                                <label className='flex items-center justify-center gap-2' htmlFor="number">Number<FaPhoneAlt /> :  </label>
                             </div>
-                            <div className="w-[70%] h-fit ">
-                                <input required className='h-10 w-full bg-transparent px-2 rounded-md border border-black' type="email" name='email' />
+                            <div  className="w-[70%] h-fit ">
+                                <input onChange={HandleInputData} required className='h-10 w-full bg-transparent px-2 rounded-md border border-black' value={PhoneNumbre} id='number' type="text" name='phoneNumber' />
                             </div>
                         </div>
                      {/* email section  */}
@@ -62,7 +105,7 @@ export const Logging = () => {
                                 {eyeOpen ? <GoEye /> : <GoEyeClosed />  } 
                              </button>
                            
-                                <input required className='h-10 w-full bg-transparent px-2 rounded-md border border-black' type={passtpe} name='password' />
+                                <input onChange={HandleInputData} required className='h-10 w-full bg-transparent px-2 rounded-md border border-black'  type={passtpe} value={Password} name='password' id='password' />
                             </div>
                         </div>
                      {/* password section  */}

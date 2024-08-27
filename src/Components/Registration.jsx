@@ -261,6 +261,7 @@ export const Registration = () => {
                   className="h-10 w-full bg-transparent px-2 rounded-md border border-black"
                   type="text"
                   name="fullName"
+                  id="fullName"
                 />
               </div>
             </div>
@@ -310,6 +311,7 @@ export const Registration = () => {
                   className="h-10 w-full bg-transparent px-2 rounded-md border border-black"
                   type="email"
                   name="email"
+                  id="email"
                 />
               </div>
             </div>
@@ -359,6 +361,7 @@ export const Registration = () => {
                   className="h-10 w-full bg-transparent px-2 rounded-md border border-black"
                   type="text"
                   name="phoneNumber"
+                  id="PhoneNumber"
                 />
               </div>
             </div>
@@ -391,6 +394,7 @@ export const Registration = () => {
                   className="h-10 w-full bg-transparent px-2 rounded-md border border-black"
                   type={passtpe}
                   name="password"
+                  id="password"
                 />
               </div>
             </div>
@@ -446,6 +450,7 @@ export const Registration = () => {
                   className="h-10 w-full bg-transparent px-2 rounded-md border border-black"
                   type={Cpasstpe}
                   name="ConfirmPassword"
+                  id="ConfirmPassword"
                 />
               </div>
             </div>

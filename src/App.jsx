@@ -4,6 +4,7 @@ import { Home } from './Pages/Home'
 import {Busket} from './Pages/Busket'
 import {Account} from './Pages/Account'
 import {Order} from './Pages/Order'
+import {ConfirmBuy} from './Pages/ConfirmBuy'
 
 
 
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
   {
     path: '/order/:id',
     element: < Order />
+    
+  },
+  {
+    path: '/confirmorder',
+    element: < ConfirmBuy />
     
   }
 

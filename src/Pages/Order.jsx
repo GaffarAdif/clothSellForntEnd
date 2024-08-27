@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header } from '../Components/Header'
-import { OrderCompo } from '../Components/Order'
+import { OrderCompo } from '../Components/OrderCompo'
 import { useParams } from 'react-router-dom'
 
 export const Order = () => {
@@ -14,7 +14,7 @@ console.log(id)
     <div className="w-full px-5">
 
     <Header />
-    < OrderCompo />
+    < OrderCompo porductId = {id} />
 
 
 

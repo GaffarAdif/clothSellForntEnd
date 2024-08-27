@@ -1,7 +1,7 @@
 .size-selection{
  color: black; 
  position: relative; 
-
+background: #dda15e;
  /* background-color: ; */
 }
 .size-selection::before {
@@ -9,15 +9,15 @@
     content: '\f560'; /* Unicode for the Font Awesome check icon */
     font-family: 'Font Awesome 5 Free'; /* Ensure the correct font family */
     font-weight: 900; /* Font weight for solid icons */
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     bottom: 2px;
     right: 2px;
 
     display: flex; /* Flexbox to center the icon */
     align-items: center;
     justify-content: center;
-    color:#78e08f;
+    color:black;
 }
 
 /* for div full screen hight without header size  */
@@ -76,4 +76,9 @@
 /* messenger background  */
 .messegngerIamgebg{
     background: linear-gradient(135deg, #FF5CA1, #0078FF);
+}
+
+/* for busketDivfull */
+.busketFullScreen{
+    height: 100vh;
 }
