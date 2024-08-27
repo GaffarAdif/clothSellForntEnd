@@ -46,7 +46,7 @@ const busketData = useSelector((state)=> state.UpdateBusketArray)
 
 {/* Buy section  */}
 
-<div className="w-full h-12  mt-5 flex gap-2">
+<div className="w-full h-12 lg:w-[30%] lg:mx-auto  mt-5 flex gap-2">
     <div className="w-[40%] bg-slate-400 rounded-md grid place-content-center">
         <span>Total Price <br /> 500 BDT</span>
     </div>

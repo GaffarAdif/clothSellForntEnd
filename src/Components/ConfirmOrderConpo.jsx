@@ -18,7 +18,7 @@ export const ConfirmOrderConpo = () => {
         <form onSubmit={HandleConfirmOrder} className=" h-[250px] w-full  flex gap-4 flex-col justify-center items-center">
           <label htmlFor="textArea">Enter Your Address</label>
 
-            <textarea className="h-[80px] w-[90%] rounded-md p-3" name="textArea" id="textArea" placeholder="Example : Distric,Upazila,Vilage 'Sirajganj,Sirajganj Sadar,Janpur' ">
+            <textarea className="h-[80px] w-[90%] lg:w-[40%] rounded-md p-3" name="textArea" id="textArea" placeholder="Example : Distric,Upazila,Vilage 'Sirajganj,Sirajganj Sadar,Janpur' ">
 
             </textarea>
 

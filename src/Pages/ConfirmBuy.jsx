@@ -8,7 +8,7 @@ export const ConfirmBuy = () => {
 
   const busketData = useSelector((state)=> state.UpdateBusketArray)
 
-console.log(busketData)
+console.log(busketData.length)
   return (
     <div className={`w-full ${busketData.length == 0 ? 'h-screen' : null}`}>
       < Header />

@@ -15,7 +15,7 @@ export const AccountManu = () => {
 
   <div className="w-full divHightWithoutHeader flex items-start justify-center">
 
-<div className="w-full mt-10">
+<div className="w-full  lg:w-[70%] mt-10">
 
 {/* profile picture sectoin  */}
 <div className="h-[150px] w-[150px] rounded-full mx-auto relative  flex justify-center items-center">
@@ -30,7 +30,7 @@ export const AccountManu = () => {
   <h2 className='text-center text-[25px]'>Gaffar Adif</h2>
 </div>
 {/* Functionality section  */}
-<div className="w-full grid grid-cols-4 gap-1 py-3 ">
+<div className="w-full grid grid-cols-4 gap-1 lg:gap-3 py-3 ">
 
   <button className='bg-[#94d2bd] h-fit w-full py-2 flex flex-col justify-center items-center rounded-md'>
     < FaUserPen className='w-8 h-8' />

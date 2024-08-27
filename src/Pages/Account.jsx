@@ -10,7 +10,7 @@ import '../GlobalCss/global.css'
 export const Account = () => {
 
 
-  const [isLoging,setIsloging] = useState(false)
+  const [isLoging,setIsloging] = useState(true)
 
 
 

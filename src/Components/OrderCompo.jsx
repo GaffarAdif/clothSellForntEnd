@@ -118,7 +118,7 @@ const HaanldeBay = (e)=>{
   return (
     <div className="">
       {/* iamge div  */}
-      <div className="h-[250px] w-full mt-3  flex justify-center items-center p-2">
+      <div className="h-[250px] lg:h-[400px] w-full mt-3  flex justify-center items-center p-2">
         <img
           className="h-full rounded-md"
           src="/Images/Product_images/t_shart (42).jpeg"
@@ -127,13 +127,14 @@ const HaanldeBay = (e)=>{
       </div>
 
       {/* titile and price div  */}
-      <div className="h-fit py-2 px-2 w-full bg-[#a1c181] rounded-md grid grid-cols-2">
+      <div className="h-fit py-2 px-2 w-full lg:w-1/2 lg:mx-auto lg:mt-2 bg-[#a1c181] rounded-md grid grid-cols-2">
         <p className="">Stylish T-shirt</p>
         <p className="">Price : 220 BDT</p>
       </div>
 
-      {/* size selection div  */}
-      <div className="h-fit w-full mt-1">
+<div className="w-full  lg:flex lg:justify-between lg:items-center">
+
+        <div className="h-fit w-full mt-1 flex justify-center items-center">
         <button
           onClick={SizeHandler} id="product-size" name="SM"
           className="border px-4 mx-1 my-1 border-black text-[20px] rounded-md duration-500 "
@@ -167,14 +168,14 @@ const HaanldeBay = (e)=>{
       </div>
 
       {/* color selection */}
-
       <div className="h-fit w-full mt-1">
 
     {colorError ?   <div className="bottom-[-25px] left-0 h-[25px] w-full flex justify-center items-center bg-red-500 my-1">
         <p>Please Select Color</p>
       </div> : null}
 
-        <button
+      <div className=" flex justify-center items-center">
+           <button
           onClick={SizeHandler} id="product-color" name="black"
           className="border p-1 mx-1 border-black text-[20px] rounded-md "
         >
@@ -186,7 +187,16 @@ const HaanldeBay = (e)=>{
         >
           Blue
         </button>
+
       </div>
+
+     
+
+      </div>
+
+</div>
+      {/* size selection div  */}
+
 
       {/* countity adjusment  */}
       <div className="h-[60px] w-[200px] mx-auto mt-2 bg-[#95718665] rounded-md grid grid-cols-3">
@@ -208,7 +218,7 @@ const HaanldeBay = (e)=>{
       </div>
 
       {/* buy or add to card option  */}
-      <div className="w-full h-[60px] relative  mt-2 flex gap-2">
+      <div className="w-full h-[60px] relative  mt-2 flex gap-2 lg:w-[30%] lg:mx-auto  lg:py-10">
         <button className="absolute top-[-40px] right-0 h-fit">
           <SiGithubsponsors className="w-10 h-10" />
         </button>

@@ -82,3 +82,24 @@ background: #dda15e;
 .busketFullScreen{
     height: 100vh;
 }
+
+.HeaderFixedPosition{
+    position: fixed;
+    bottom: 12px;
+    left: 0;
+    margin-left: 5%;
+    display:  grid;
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+    width: 90%;
+    border-radius: 6px;
+    background-color: #ccd5ae;
+    padding: 2px;
+}
+
+
+
+
+
+
+
+
