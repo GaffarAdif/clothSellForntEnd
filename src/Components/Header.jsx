@@ -6,13 +6,15 @@ import { MdShoppingCartCheckout } from "react-icons/md";
 import { FaFacebookMessenger } from "react-icons/fa6";
 import { Link, NavLink } from 'react-router-dom';
 import '../GlobalCss/global.css'
+import { useSelector } from 'react-redux';
 
 export const Header = () => {
 
   const possition = 'HeaderFixedPosition'
-
+  const busketArray = useSelector((prev)=>prev.UpdateBusketArray)
   
 
+  console.log(busketArray.length)
 
   return (
     <div>
@@ -31,7 +33,7 @@ export const Header = () => {
 
 {/* search section  */}
             <div className="w-[70%]  h-10 lg:h-[50px]  flex gap-1 lg:lg:w-[50%]">
-              <input className='w-[80%] h-8 mt-1 rounded-md px-1 lg:h-10 lg:rounded-none' type="text" name="" id="" placeholder='Search..' />
+              <input className='w-[80%] h-8 mt-1 rounded-sm px-1 lg:h-10 lg:rounded-md bg-transparent border border-black' type="text" name="" id="" placeholder='Search..' />
                <button className='w-[20%] h-8 mt-1 flex justify-center items-center'> <IoSearchOutline className='w-8 h-8' /></button>
             </div>
 
@@ -46,9 +48,12 @@ export const Header = () => {
 
                <NavLink to='/busket'  className={({isActive})=> isActive?  `flex flex-col items-center relative text-[20px]   ` :  `flex flex-col items-center relative   text-[#718355]` } >
 
-                   <p className='absolute top-[-20px] lg:top-[-7px] right-[17px] lg:right-[-24px] w-6 h-6 bg-[#9cccec98] rounded-full flex items-center justify-center '>
-                     1
-                   </p>
+            {
+              busketArray.length > 0 ? <p className='absolute top-[-20px] lg:top-[-7px] right-[17px] lg:right-[-24px] w-6 h-6 bg-[#9cccec98] rounded-full flex items-center justify-center '>
+              {busketArray.length}
+            </p> : null
+            }
+                   
 
                  < MdShoppingCartCheckout className='h-8 w-8 lg:hidden'  />
                  <span className='mt-[-4px] lg:mt-0'>Busket</span>

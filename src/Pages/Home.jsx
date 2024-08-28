@@ -45,18 +45,18 @@ export const Home = () => {
         </div>
 
         <div className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-3 lg:grid-cols-5">
-          < Card />
-          < Card />
-          < Card />
-          < Card />
-          < Card />
-          < Card />
-          < Card />
-          < Card />
-          < Card />
-          < Card />
-          < Card />
-          < Card />
+          < Card  ProductId={1}  productname={'T-Shirt'} productPrice={210}/>
+          < Card  ProductId={2}  productname={'T-Shirt'} productPrice={220}/>
+          < Card  ProductId={3}  productname={'T-Shirt'} productPrice={230}/>
+          < Card  ProductId={4}  productname={'T-Shirt'} productPrice={240}/>
+          < Card  ProductId={5}  productname={'T-Shirt'} productPrice={250}/>
+          < Card  ProductId={6}  productname={'T-Shirt'} productPrice={260}/>
+          < Card  ProductId={7}  productname={'T-Shirt'} productPrice={270}/>
+          < Card  ProductId={8}  productname={'T-Shirt'} productPrice={280}/>
+          < Card  ProductId={9}  productname={'T-Shirt'} productPrice={290}/>
+          < Card  ProductId={10} productname={'T-Shirt'} productPrice={300} />
+          < Card  ProductId={11} productname={'T-Shirt'} productPrice={310} />
+          < Card  ProductId={12} productname={'T-Shirt'} productPrice={320} />
         </div>
 
 

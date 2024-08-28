@@ -3,12 +3,18 @@ import { Header } from '../Components/Header'
 import { BusketCompo } from '../Components/BusketCompo';
 import {useSelector} from 'react-redux'
 import '../GlobalCss/global.css'
+import { useNavigate } from 'react-router-dom';
 
 export const Busket = () => {
+  const navigate = useNavigate()
 
 const busketData = useSelector((state)=> state.UpdateBusketArray)
 
-
+const PlaceOrderHandle = ()=>{
+  setTimeout(() => {
+    navigate('/confirmorder')
+  }, 200);
+}
 
 
   return (
@@ -50,7 +56,7 @@ const busketData = useSelector((state)=> state.UpdateBusketArray)
     <div className="w-[40%] bg-slate-400 rounded-md grid place-content-center">
         <span>Total Price <br /> 500 BDT</span>
     </div>
-    <button className="w-[60%] bg-purple-400 rounded-md">Place Order</button>
+    <button onClick={PlaceOrderHandle} className="w-[60%] bg-purple-400 rounded-md">Place Order</button>
 
 </div>
 

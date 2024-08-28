@@ -53,7 +53,6 @@ const router = createBrowserRouter([
   {
     path: '/confirmorder',
     element: < ConfirmBuy />
-    
   }
 
 ])

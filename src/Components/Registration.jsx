@@ -151,7 +151,7 @@ export const Registration = () => {
     if (NumberCheck && passCheck) {
       try {
         const response = await axios.post(
-          "http://localhost:3000/registration",
+          "http://localhost:3000/profileUpdate",
           userData
         );
         console.log(response.data); // Handle success response

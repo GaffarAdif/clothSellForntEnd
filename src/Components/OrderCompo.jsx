@@ -98,7 +98,6 @@ const HaanldeBay = (e)=>{
         productQuyantity: orderQuuntity,
       },
     });
-
     setColorError(false)
 
     setTimeout(() => {
