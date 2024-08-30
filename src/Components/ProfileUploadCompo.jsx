@@ -6,41 +6,38 @@ import { useRef } from "react";
 import LoaderUpload from "./Loader/LoaderUpload";
 import { useSelector } from "react-redux";
 
-export const ProfileUploadCompo = ({ changeUpload, porfileState,showUploadBtn }) => {
-
-  const serverUrl = useSelector(state => state.SerVerUrlSave)
+export const ProfileUploadCompo = ({
+  changeUpload,
+  porfileState,
+  showUploadBtn,
+}) => {
+  const serverUrl = useSelector((state) => state.SerVerUrlSave);
 
   const myElementRef = useRef(null);
-  const [Loader,setLoader] = useState(false)
+  const [Loader, setLoader] = useState(false);
 
-  const userDBnumber  = localStorage.getItem('userNumber') || null
-
-
+  const userDBnumber = localStorage.getItem("userNumber") || null;
 
   const userEmail = "gaffar@gmail.com";
 
-
-
-// profileUpolad sectoin here 
+  // profileUpolad sectoin here
 
   const HandleProfilePic = (e) => {
     e.preventDefault();
 
-    setLoader(true)
+    setLoader(true);
     let file;
-    if(myElementRef.current){
+    if (myElementRef.current) {
       const fileInput = myElementRef.current;
-      file = fileInput.files[0]
-      if(file){
-        console.log('file is selected', file)
-      }else[
-        console.log('there is problem in file')
-      ]
+      file = fileInput.files[0];
+      if (file) {
+        console.log("file is selected", file);
+      } else [console.log("there is problem in file")];
     }
     // Create a new FormData object
     const formData = new FormData();
     formData.append("email", userEmail);
-    formData.append("profilePic", file); 
+    formData.append("profilePic", file);
     axios
       .post(`${serverUrl}profileUpdate/${userDBnumber}`, formData, {
         headers: {
@@ -48,21 +45,18 @@ export const ProfileUploadCompo = ({ changeUpload, porfileState,showUploadBtn })
         },
       })
       .then((response) => {
-        console.log(response.data.porfileUrl)
-        localStorage.setItem('profile', response.data.porfileUrl);
+        console.log(response.data.porfileUrl);
+        localStorage.setItem("profile", response.data.porfileUrl);
 
-        changeUpload()
-        showUploadBtn(false)
+        changeUpload();
+        showUploadBtn(false);
 
-       return(response);
+        return response;
       })
       .catch((error) => {
         console.log(error);
       });
-
   };
-
-
 
   return (
     <div
@@ -70,32 +64,23 @@ export const ProfileUploadCompo = ({ changeUpload, porfileState,showUploadBtn })
         porfileState ? "uploead-section-success" : null
       }  top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%] p-2 bg-blue-200 w-[90%]  rounded-md flex justify-center items-start`}
     >
-
-
-
-     <form
+      <form
         onSubmit={HandleProfilePic}
         className="h-fit w-full py-3 flex items-center flex-col gap-4 overflow-hidden"
       >
         {/* input sectoin  */}
 
         <div className="h-[100px] relative  w-[100px] bg-blue-300 rounded-full flex justify-center items-center ">
-          {
-            Loader ?    <LoaderUpload /> : null
-          }
+          {Loader ? <LoaderUpload /> : null}
 
-    
-
-
-          <input ref={myElementRef} type="file" id="profileInput" className="hidden" />
+          <input
+            ref={myElementRef}
+            type="file"
+            id="profileInput"
+            className="hidden"
+          />
           <label htmlFor="profileInput" className="">
             <FaCloudUploadAlt className="w-[80px] h-[80px]" />
-
-
-
-
-
-
           </label>
         </div>
 
@@ -115,11 +100,6 @@ export const ProfileUploadCompo = ({ changeUpload, porfileState,showUploadBtn })
           </button>
         </div>
       </form>
-
-
-      </div>
- 
-
-   
+    </div>
   );
 };

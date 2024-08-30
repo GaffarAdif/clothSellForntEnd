@@ -5,9 +5,8 @@ import { SiGithubsponsors } from "react-icons/si";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-export const OrderCompo = ({porductId}) => {
-
-  // data from redux store 
+export const OrderCompo = ({ porductId }) => {
+  // data from redux store
   const orderQuuntity = useSelector((state) => {
     return state.updateQuantity;
   });
@@ -16,103 +15,91 @@ export const OrderCompo = ({porductId}) => {
     return state.UpdateBusketArray;
   });
   const updateValue = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  // user local State  
+  // user local State
 
   const [busketLocalData, setBusketLocalData] = useState({
     size: "M",
     color: null,
   });
 
-  const [colorError,setColorError] = useState(false)
+  const [colorError, setColorError] = useState(false);
 
-
-  // for handleing selection size or color 
+  // for handleing selection size or color
   const SizeHandler = (e) => {
     const TargaterElement = e.target;
 
-      // adding class for user selectin indintify 
+    // adding class for user selectin indintify
 
     TargaterElement.parentNode.childNodes.forEach((element) => {
       element.classList.remove("size-selection");
     });
     TargaterElement.classList.add("size-selection");
 
-      // collect user data 
+    // collect user data
 
-    if(TargaterElement.id == 'product-size'){
-      setBusketLocalData((prev)=>{
-        return({
-          ...prev,size : TargaterElement.name
-        })
-      })
-      
-    }
-    else if(TargaterElement.id == 'product-color'){
-      setBusketLocalData((prev)=>{
-        return({
-          ...prev,color : TargaterElement.name
-        })
-      })
-
+    if (TargaterElement.id == "product-size") {
+      setBusketLocalData((prev) => {
+        return {
+          ...prev,
+          size: TargaterElement.name,
+        };
+      });
+    } else if (TargaterElement.id == "product-color") {
+      setBusketLocalData((prev) => {
+        return {
+          ...prev,
+          color: TargaterElement.name,
+        };
+      });
     }
   };
 
-
-// push data to array 
+  // push data to array
   const AddToBusketHandler = () => {
+    if (busketLocalData.color) {
+      updateValue({
+        type: "add",
+        newData: {
+          productId: Number(porductId),
+          porductSize: busketLocalData.size,
+          productColor: busketLocalData.color,
+          productQuyantity: orderQuuntity,
+        },
+      });
 
-      if(busketLocalData.color){
-        updateValue({
-          type: "add",
-          newData: {
-            productId: Number(porductId),
-            porductSize: busketLocalData.size,
-            productColor: busketLocalData.color,
-            productQuyantity: orderQuuntity,
-          },
-        });
+      setColorError(false);
 
-        setColorError(false)
-
-        setTimeout(() => {
-          navigate('/busket')
-        }, 200);
-
-      }else{
-        setColorError(true)
-      }
+      setTimeout(() => {
+        navigate("/busket");
+      }, 200);
+    } else {
+      setColorError(true);
+    }
   };
 
-// buy now section handle 
-const HaanldeBay = (e)=>{
-  
-  if(busketLocalData.color){
-    updateValue({
-      type: "add",
-      newData: {
-        productId: Number(porductId),
-        porductSize: busketLocalData.size,
-        productColor: busketLocalData.color,
-        productQuyantity: orderQuuntity,
-      },
-    });
-    setColorError(false)
+  // buy now section handle
+  const HaanldeBay = (e) => {
+    if (busketLocalData.color) {
+      updateValue({
+        type: "add",
+        newData: {
+          productId: Number(porductId),
+          porductSize: busketLocalData.size,
+          productColor: busketLocalData.color,
+          productQuyantity: orderQuuntity,
+        },
+      });
+      setColorError(false);
 
-    setTimeout(() => {
-      navigate('/confirmorder')
-    }, 200);
-
-  }else{
-    setColorError(true)
-  }
-
-  
-
-}
-
-
+      setTimeout(() => {
+        navigate("/confirmorder");
+      }, 200);
+    } else {
+      setColorError(true);
+    }
+  };
 
   return (
     <div className="">
@@ -131,71 +118,79 @@ const HaanldeBay = (e)=>{
         <p className="">Price : 220 BDT</p>
       </div>
 
-<div className="w-full  lg:flex lg:justify-between lg:items-center">
-
+      <div className="w-full  lg:flex lg:justify-between lg:items-center">
         <div className="h-fit w-full mt-1 flex justify-center items-center">
-        <button
-          onClick={SizeHandler} id="product-size" name="SM"
-          className="border px-4 mx-1 my-1 border-black text-[20px] rounded-md duration-500 "
-        >
-          SM
-        </button>
-        <button
-          onClick={SizeHandler} id="product-size" name="M"
-          className="border px-4 mx-1 my-1 border-black text-[20px] rounded-md duration-500 size-selection"
-        >
-          M
-        </button>
-        <button
-          onClick={SizeHandler} id="product-size" name="L"
-          className="border px-4 mx-1 my-1 border-black text-[20px] rounded-md duration-500 "
-        >
-          L
-        </button>
-        <button
-          onClick={SizeHandler} id="product-size" name="XL"
-          className="border px-4 mx-1 my-1 border-black text-[20px] rounded-md duration-500 "
-        >
-          XL
-        </button>
-        <button
-          onClick={SizeHandler} id="product-size" name="XXL"
-          className="border px-4 mx-1 my-1 border-black text-[20px] rounded-md duration-500 "
-        >
-          XXL
-        </button>
+          <button
+            onClick={SizeHandler}
+            id="product-size"
+            name="SM"
+            className="border px-4 mx-1 my-1 border-black text-[20px] rounded-md duration-500 "
+          >
+            SM
+          </button>
+          <button
+            onClick={SizeHandler}
+            id="product-size"
+            name="M"
+            className="border px-4 mx-1 my-1 border-black text-[20px] rounded-md duration-500 size-selection"
+          >
+            M
+          </button>
+          <button
+            onClick={SizeHandler}
+            id="product-size"
+            name="L"
+            className="border px-4 mx-1 my-1 border-black text-[20px] rounded-md duration-500 "
+          >
+            L
+          </button>
+          <button
+            onClick={SizeHandler}
+            id="product-size"
+            name="XL"
+            className="border px-4 mx-1 my-1 border-black text-[20px] rounded-md duration-500 "
+          >
+            XL
+          </button>
+          <button
+            onClick={SizeHandler}
+            id="product-size"
+            name="XXL"
+            className="border px-4 mx-1 my-1 border-black text-[20px] rounded-md duration-500 "
+          >
+            XXL
+          </button>
+        </div>
+
+        {/* color selection */}
+        <div className="h-fit w-full mt-1">
+          {colorError ? (
+            <div className="bottom-[-25px] left-0 h-[25px] w-full flex justify-center items-center bg-red-500 my-1">
+              <p>Please Select Color</p>
+            </div>
+          ) : null}
+
+          <div className=" flex justify-center items-center">
+            <button
+              onClick={SizeHandler}
+              id="product-color"
+              name="black"
+              className="border p-1 mx-1 border-black text-[20px] rounded-md "
+            >
+              Balck
+            </button>
+            <button
+              onClick={SizeHandler}
+              id="product-color"
+              name="blue"
+              className="border p-1 mx-1 border-black text-[20px] rounded-md "
+            >
+              Blue
+            </button>
+          </div>
+        </div>
       </div>
-
-      {/* color selection */}
-      <div className="h-fit w-full mt-1">
-
-    {colorError ?   <div className="bottom-[-25px] left-0 h-[25px] w-full flex justify-center items-center bg-red-500 my-1">
-        <p>Please Select Color</p>
-      </div> : null}
-
-      <div className=" flex justify-center items-center">
-           <button
-          onClick={SizeHandler} id="product-color" name="black"
-          className="border p-1 mx-1 border-black text-[20px] rounded-md "
-        >
-          Balck
-        </button>
-        <button
-          onClick={SizeHandler} id="product-color" name="blue"
-          className="border p-1 mx-1 border-black text-[20px] rounded-md "
-        >
-          Blue
-        </button>
-
-      </div>
-
-     
-
-      </div>
-
-</div>
       {/* size selection div  */}
-
 
       {/* countity adjusment  */}
       <div className="h-[60px] w-[200px] mx-auto mt-2 bg-[#95718665] rounded-md grid grid-cols-3">
@@ -222,7 +217,10 @@ const HaanldeBay = (e)=>{
           <SiGithubsponsors className="w-10 h-10" />
         </button>
 
-        <button onClick={HaanldeBay} className="w-[70%] h-[60px] bg-[#81b9189c] rounded-md">
+        <button
+          onClick={HaanldeBay}
+          className="w-[70%] h-[60px] bg-[#81b9189c] rounded-md"
+        >
           Buy Now
         </button>
 

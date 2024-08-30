@@ -12,8 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export const Registration = () => {
-
-  const serverUrl = useSelector(state=> state.SerVerUrlSave)
+  const serverUrl = useSelector((state) => state.SerVerUrlSave);
   const navigate = useNavigate();
 
   const [eyeOpen, setEyeopen] = useState(true);
@@ -153,10 +152,7 @@ export const Registration = () => {
 
     if (NumberCheck && passCheck) {
       try {
-        const response = await axios.post(
-          `${serverUrl}registration`,
-          userData
-        );
+        const response = await axios.post(`${serverUrl}registration`, userData);
         console.log(response.data); // Handle success response
         ShowSuccesmessege(response.data.Succses, response.data.message);
       } catch (error) {
@@ -200,7 +196,7 @@ export const Registration = () => {
               return {
                 ...prev,
                 PhoneError: {
-                  WrongPhone: null ,
+                  WrongPhone: null,
                 },
               };
             });
@@ -471,7 +467,10 @@ export const Registration = () => {
             {/* loing button   */}
 
             <div className="h-fit w-full  flex justify-center items-center mt-2">
-              <Link to={"/account/loging"} className="h-10 w-1/2 bg-[#a3b18a] rounded-md flex items-center justify-center">
+              <Link
+                to={"/account/loging"}
+                className="h-10 w-1/2 bg-[#a3b18a] rounded-md flex items-center justify-center"
+              >
                 <span>Loging</span>
               </Link>
             </div>

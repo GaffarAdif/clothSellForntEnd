@@ -15,40 +15,38 @@ import { useNavigate } from "react-router-dom";
 export const AccountManu = () => {
   const [porfileUpload, setProfileUpload] = useState(false);
 
-  const [profileUrlclint, setProfileUrl] = useState("https://res.cloudinary.com/dj6ekrbq6/image/upload/v1724925457/aknvoquczokzncw4omay.jpg");
+  const [profileUrlclint, setProfileUrl] = useState(
+    "https://res.cloudinary.com/dj6ekrbq6/image/upload/v1724925457/aknvoquczokzncw4omay.jpg"
+  );
 
-  const userProfileDatabseLink  = localStorage.getItem('profile') || null
+  const userProfileDatabseLink = localStorage.getItem("profile") || null;
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [uploadButtonShow, setUploadButtonShow] = useState(true);
 
   const HandleProfilePic = () => {
     setProfileUpload((prev) => !prev);
   };
 
-// logout hande 
-const logoutHandle = ()=>{
-  localStorage.clear()
-  
-  setTimeout(() => {
-    navigate('/')
-  }, 300);
-  
-  
-}
+  // logout hande
+  const logoutHandle = () => {
+    localStorage.clear();
 
-useEffect(() => {
-  if(userProfileDatabseLink){
-    setProfileUrl(userProfileDatabseLink)
-    if(true){
-      setUploadButtonShow(false)
+    setTimeout(() => {
+      navigate("/");
+    }, 300);
+  };
+
+  useEffect(() => {
+    if (userProfileDatabseLink) {
+      setProfileUrl(userProfileDatabseLink);
+      if (true) {
+        setUploadButtonShow(false);
+      }
     }
-  }
-  
+  }, [uploadButtonShow]);
 
-}, [uploadButtonShow])
-
-// logout hande 
+  // logout hande
 
   return (
     <div className="w-full relative z-10 flex items-start justify-center ">
@@ -129,7 +127,10 @@ useEffect(() => {
         </div>
 
         {/* logout section  */}
-        <div onClick={logoutHandle} className="w-full h-fit grid place-content-center mt-5">
+        <div
+          onClick={logoutHandle}
+          className="w-full h-fit grid place-content-center mt-5"
+        >
           <button className="h-10 w-[170px] bg-gray-500 rounded-md flex justify-center items-center">
             <div className="flex gap-1 justify-center items-center text-[20px]">
               <span>Logout</span>
