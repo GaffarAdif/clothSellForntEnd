@@ -9,42 +9,58 @@ import { ImFacebook2 } from "react-icons/im";
 import { FaAddressCard } from "react-icons/fa";
 import { ProfileUploadCompo } from "./ProfileUploadCompo";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const AccountManu = () => {
   const [porfileUpload, setProfileUpload] = useState(false);
-  const [profileUrl, setProfileUrl] = useState(null);
 
-  const GetProfileDta = async () => {
-    const myUrl = "http://localhost:3000/UserProfile";
-    try {
-      const response = await axios.post(myUrl, {
-        userEmail: "gaffar@gmail.com",
-      });
-setProfileUrl(response.data.profileUrl.ProfileIamge)
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [profileUrlclint, setProfileUrl] = useState("https://res.cloudinary.com/dj6ekrbq6/image/upload/v1724925457/aknvoquczokzncw4omay.jpg");
 
-  useEffect(() => {
-    GetProfileDta();
-  }, []);
+  const userProfileDatabseLink  = localStorage.getItem('profile') || null
+
+  const navigate = useNavigate()
+  const [uploadButtonShow, setUploadButtonShow] = useState(true);
 
   const HandleProfilePic = () => {
     setProfileUpload((prev) => !prev);
   };
 
+// logout hande 
+const logoutHandle = ()=>{
+  localStorage.clear()
+  
+  setTimeout(() => {
+    navigate('/')
+  }, 300);
+  
+  
+}
+
+useEffect(() => {
+  if(userProfileDatabseLink){
+    setProfileUrl(userProfileDatabseLink)
+    if(true){
+      setUploadButtonShow(false)
+    }
+  }
+  
+
+}, [uploadButtonShow])
+
+// logout hande 
+
   return (
-    <div className="w-full relative divHightWithoutHeader flex items-start justify-center ">
+    <div className="w-full relative z-10 flex items-start justify-center ">
       {/* here is Profile pic upload section  */}
 
       {porfileUpload ? (
         <ProfileUploadCompo
           porfileState={porfileUpload}
           changeUpload={HandleProfilePic}
+          showUploadBtn={setUploadButtonShow}
         />
       ) : null}
-      
 
       {/* here is Profile pic upload section  */}
 
@@ -52,15 +68,20 @@ setProfileUrl(response.data.profileUrl.ProfileIamge)
 
       <div className="w-full  lg:w-[70%] mt-10">
         {/* profile picture sectoin  */}
-        <div className={`h-[150px] relative w-[150px] rounded-full mx-auto bg-cover bg-center bg-[url('./Images/Importat_Image/defultUserImage.jpg')]   flex justify-center items-center`}>
-          <div
-            onClick={HandleProfilePic}
-            className="w-[150px] h-[150px] rounded-full  backdrop-blur-sm flex items-center justify-center"
-          >
-            <button className="w-[80%] h-10 rounded-md bg-[#78bbe781]">
-              Upload
-            </button>
-          </div>
+        <div
+          style={{ backgroundImage: `url(${profileUrlclint})` }}
+          className={`h-[150px] z-10 relative w-[150px] rounded-full mx-auto bg-cover bg-center    flex justify-center items-center`}
+        >
+          {uploadButtonShow ? (
+            <div
+              onClick={HandleProfilePic}
+              className="w-[150px] h-[150px] rounded-full  backdrop-blur-sm flex items-center justify-center"
+            >
+              <button className="w-[80%] h-10 rounded-md bg-[#78bbe781]">
+                Upload
+              </button>
+            </div>
+          ) : null}
         </div>
 
         {/* Name section  */}
@@ -108,7 +129,7 @@ setProfileUrl(response.data.profileUrl.ProfileIamge)
         </div>
 
         {/* logout section  */}
-        <div className="w-full h-fit grid place-content-center mt-5">
+        <div onClick={logoutHandle} className="w-full h-fit grid place-content-center mt-5">
           <button className="h-10 w-[170px] bg-gray-500 rounded-md flex justify-center items-center">
             <div className="flex gap-1 justify-center items-center text-[20px]">
               <span>Logout</span>

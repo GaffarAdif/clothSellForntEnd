@@ -1,16 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Header } from '../Components/Header'
 import { AccountManu } from '../Components/AccountManu'
 import { Link } from 'react-router-dom'
 import '../GlobalCss/global.css'
+import { useSelector } from 'react-redux'
 
 
 
 
 export const Account = () => {
 
+ 
 
-  const [isLoging,setIsloging] = useState(true)
+  const UserPhone_number = localStorage.getItem('userNumber') || null
+
+  const [isLoging,setIsloging] = useState(false)
+
+  useEffect(() => {
+
+
+   if(UserPhone_number){
+    setIsloging(true)
+   }
+
+  
+  }, [])
+  
 
 
 

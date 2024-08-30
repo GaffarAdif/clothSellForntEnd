@@ -6,15 +6,29 @@ import { GoEye,GoEyeClosed } from "react-icons/go";
 import { FaPhoneAlt } from "react-icons/fa";
 
 import '../GlobalCss/global.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
 export const Logging = () => {
+
+    const serverUrl = useSelector((state)=> state.SerVerUrlSave)
+
+    const navigate = useNavigate()
+
+    // for eyey econ 
     const [eyeOpen,setEyeopen] = useState(true)
     const [passtpe,setpasstpe] = useState('text')
+    // for eyey econ 
 
-    
+
+    // input handle 
     const [PhoneNumbre,setPhoneNumber] = useState('')
     const [Password,setPassword] = useState('')
+    // input handle 
+    
+    const [showError,setShowError] = useState(false)
+
 
 
 // pasword eye iacon handle 
@@ -64,10 +78,62 @@ if(targatedItem.name == 'password'){
   };
 
 
+//   for set localstorage and local variable 
+
+const setUserInfo = (data)=>{
+
+    const {FullName,Email,phoneNumber,ProfileIamge} = data
+
+    localStorage.setItem('userNumber', phoneNumber);
+    localStorage.setItem('profile', ProfileIamge);
+    localStorage.setItem('FullName', FullName);
+    localStorage.setItem('Email', Email);
+
+
+
+
+setTimeout(() => {
+    navigate('/')
+}, 300);
+
+}
+
+
+
+
+
     // loging hadnle section here 
-    const HandleLoging = (e)=>{
+    const HandleLoging = async (e)=>{
         e.preventDefault()
-        PhoneNerValidate()
+
+        const CheckValidation = PhoneNerValidate()
+        console.log(CheckValidation)
+        if(CheckValidation){
+   
+            try {
+                await axios.get(`${serverUrl}loinginfo/${PhoneNumbre}/${Password}`).then(response=>{
+
+                    console.log(response.data.UserInfo)
+                    setUserInfo(response.data.UserInfo)
+
+
+                }).catch(error=>{
+                    console.log(error)
+                })
+                
+            } catch (error) {
+                
+            }
+
+        }else{
+            setShowError(true)
+
+            setTimeout(() => {
+            setShowError(false)
+                
+            }, 2000);
+        }
+       
     }
 
   return (
@@ -82,7 +148,7 @@ if(targatedItem.name == 'password'){
                     <h3 className='w-full h-8 text-center text-[25px]'>Loging</h3>
                     <form className='my-2' onSubmit={HandleLoging}>
                         
-                          {/* email section  */}
+                          {/* number section  */}
                         <div className="w-full h-fit py-1 px-1 flex gap-2">
                             <div className="w-[30%] h-10 flex justify-end items-center ">
                                 <label className='flex items-center justify-center gap-2' htmlFor="number">Number<FaPhoneAlt /> :  </label>
@@ -91,7 +157,7 @@ if(targatedItem.name == 'password'){
                                 <input onChange={HandleInputData} required className='h-10 w-full bg-transparent px-2 rounded-md border border-black' value={PhoneNumbre} id='number' type="text" name='phoneNumber' />
                             </div>
                         </div>
-                     {/* email section  */}
+                     {/* number section  */}
 
                           {/* password section  */}
                         <div className="w-full h-fit py-1 px-1 flex gap-2 mt-2">
@@ -110,6 +176,15 @@ if(targatedItem.name == 'password'){
                         </div>
                      {/* password section  */}
 
+                     {/* Error messege div  */}
+                     {
+                        showError ?  <div className="w-full h-8  flex justify-center origin-center text-red-900">
+                        <p>Number Or Password Not Match</p>
+                     </div> : null
+                     }
+                    
+                     {/* Error messege div  */}
+
                      {/* loing button   */}
                      <div className="h-fit w-full py-2 flex justify-center items-center mt-2">
 
@@ -127,9 +202,6 @@ if(targatedItem.name == 'password'){
                      </div>
 
                     </form>
-
-
-
             </div>
 
 

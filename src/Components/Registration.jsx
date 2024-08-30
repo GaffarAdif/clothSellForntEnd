@@ -9,8 +9,11 @@ import axios from "axios";
 
 import "../GlobalCss/global.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const Registration = () => {
+
+  const serverUrl = useSelector(state=> state.SerVerUrlSave)
   const navigate = useNavigate();
 
   const [eyeOpen, setEyeopen] = useState(true);
@@ -151,7 +154,7 @@ export const Registration = () => {
     if (NumberCheck && passCheck) {
       try {
         const response = await axios.post(
-          "http://localhost:3000/profileUpdate",
+          `${serverUrl}registration`,
           userData
         );
         console.log(response.data); // Handle success response
@@ -196,8 +199,8 @@ export const Registration = () => {
             setErrorMassege((prev) => {
               return {
                 ...prev,
-                emailError: {
-                  ExistEmail: null,
+                PhoneError: {
+                  WrongPhone: null ,
                 },
               };
             });
@@ -219,7 +222,7 @@ export const Registration = () => {
     });
     setTimeout(() => {
       navigate("/account/loging");
-    }, 1000);
+    }, 2000);
   }
 
   return (

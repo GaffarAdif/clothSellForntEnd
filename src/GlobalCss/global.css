@@ -1,3 +1,22 @@
+.catagorisAnimate{
+
+
+    animation-name: cataAni;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+
+}
+@keyframes cataAni {
+    0%{
+        height: 40px;
+    }
+    
+    100%{
+        height: fit-content;
+    }
+    
+}
+
 .size-selection{
  color: black; 
  position: relative; 
@@ -115,9 +134,40 @@ background: #dda15e;
     }
 }
 
+/* looder for page  */
 
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-radius: 50%;
+    border-top: 16px solid #3498db; /* Blue */
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+    z-index: 1000;
+  }
 
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* loader for upload  */
 
+.loaderUpload {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-radius: 50%;
+    border-top: 8px solid #3498db; /* Blue */
+    width: 50px;
+    height: 50px;
+    animation: spinUpload 2s linear infinite;
+    z-index: 1000;
+  }
+
+  @keyframes spinUpload {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
 
 
 

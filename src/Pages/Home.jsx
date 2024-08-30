@@ -5,6 +5,7 @@ import { CatagorisList } from '../Components/CatagorisList'
 import { Card } from '../Components/Card'
 import { FaAngleDown } from "react-icons/fa6";
 import { useSelector } from 'react-redux'
+import Loader from '../Components/Loader/Loader'
 
 
 export const Home = () => {
@@ -21,7 +22,12 @@ export const Home = () => {
 
   return (
 
-    <div className="w-full px-5">
+    <div className="w-full h-fit px-5">
+
+      {/* < Loader /> */}
+
+
+
         <Header />
         <div className="mt-3 overflow-hidden">
 

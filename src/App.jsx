@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { lazy, useState } from 'react'
 import './App.css'
 import { Home } from './Pages/Home'
 import {Busket} from './Pages/Busket'
@@ -15,6 +15,13 @@ import {
 import { Logging } from './Components/loging'
 import { Registration } from './Components/Registration'
 import { MassengerPage } from './Pages/MassengerPage'
+import { Admin } from './Pages/Admin/AdminLoing'
+import { Dashbord } from './Pages/Admin/Dashbord'
+import { ProductPage } from './Pages/Admin/ProductPage'
+import { OrderAdminPage } from './Pages/Admin/OrderAdminPage'
+import { ProductAdd } from './Pages/Admin/ProductAdd'
+
+// const Home = lazy(()=> import('./Pages/Home') )
 
 
 const router = createBrowserRouter([
@@ -53,7 +60,27 @@ const router = createBrowserRouter([
   {
     path: '/confirmorder',
     element: < ConfirmBuy />
-  }
+  },
+  {
+    path: '/admin',
+    element: < Admin />
+  },
+  {
+    path: '/admin/dashbord/',
+    element: <Dashbord />
+  },
+  {
+    path: '/admin/dashbord/product',
+    element: <ProductPage />
+  },
+  {
+    path: '/admin/dashbord/product/add',
+    element: < ProductAdd />
+  },
+  {
+    path: '/admin/dashbord/order',
+    element: <OrderAdminPage />
+  },
 
 ])
 

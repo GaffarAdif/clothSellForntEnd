@@ -20,7 +20,7 @@ export const Header = () => {
     <div>
         
 
-        <div className="w-full h-10  flex lg:h-[50px]">
+        <div className="w-full h-10  flex lg:h-[50px] z-50">
           
         {/* logo */}
           <div className="w-[30%]  h-10 lg:h-[50px] flex lg:w-[20%]">
